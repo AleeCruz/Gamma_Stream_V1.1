@@ -1,8 +1,17 @@
 {
+  "name": "gamma-stream-v1.1",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
   "dependencies": {
-    "three": "^0.182.0"
+    "three": "^0.172.0"
   },
   "devDependencies": {
-    "vite": "^7.3.0"
+    "vite": "^6.0.0"
   }
 }
