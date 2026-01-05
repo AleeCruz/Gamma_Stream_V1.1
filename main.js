@@ -10,7 +10,13 @@ const renderer = new THREE.WebGLRenderer();
 const container = document.querySelector('main')
 
 
-renderer.setSize( window.innerWidth, window.innerHeight );
+renderer.setSize( container.clientWidth, container.clientHeight);
+camera.aspect = container.clientWidth/container.clientHeight;
+camera.updateProjectionMatrix();
+
+
+
+
 renderer.setAnimationLoop( animate );
 container.appendChild(renderer.domElement);
 
