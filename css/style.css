@@ -1,0 +1,10 @@
+main {
+  width: 100%;
+  height: 80vh; /* O la altura que quieras que tenga el 3D */
+  position: relative;
+  overflow: hidden;
+}
+
+canvas {
+  display: block; /* Elimina espacios en blanco extra abajo del canvas */
+}
