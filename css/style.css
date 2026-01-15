@@ -2,8 +2,38 @@ body{
     margin: 0;
 }
 
+/*Vamos a realizar una barra de navegacion dejando varios estilos importantes y necesarios*/
 
-header, main,footer{
+header{
+    border: solid;
+}
+header nav ul{
+    list-style-type: none;
+    text-align: center;
+}
+
+header nav ul li{
+    display: inline;
+    text-align: center;
+    margin: 0 50px;
+}
+
+header nav ul li a{
+    padding: 2px 7px 2px 7px;
+    color: #2e3aa0;
+    text-decoration: none;
+    border-radius: 5px;
+}
+header nav ul li a:hover{
+    color:#c8dbeb ;
+}
+
+
+
+
+
+
+ main,footer{
     border: solid;
     border-radius: 10px;
     border-color: rgb(24, 14, 116);
