@@ -15,6 +15,9 @@ body {
     font-family: sans-serif;
 }
 
+/*A partir de aca se realizan las modificaciones necesarias para la barra de navegacion */
+
+
 header {
     width: 100%;
     background-color: rgba(1, 13, 26, 0.95);
@@ -42,6 +45,41 @@ header {
     display: flex;
     gap: 30px; 
 }
+
+
+
+
+
+.btn-youtube {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  color: #ff0000; /* Rojo YouTube */
+  border: 1px solid #ff0000;
+  padding: 8px 16px;
+  border-radius: 10px; /* Forma de píldora como tu estilo actual */
+  font-family: 'Orbitron', sans-serif; /* Usamos la fuente descargada */
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px rgba(255, 0, 0, 0.2);
+}
+
+.btn-youtube .play-icon {
+  font-size: 1.1rem;
+}
+
+/* Efecto de encendido al pasar el mouse */
+.btn-youtube:hover {
+  background-color: #ff0000;
+  color: var(--bg-deep); /* El fondo oscuro que ya definimos */
+  box-shadow: 0 0 20px #ff0000, 0 0 40px rgba(255, 0, 0, 0.4);
+  transform: translateY(-2px);
+}
+
 /* --- Estilos del Logo --- */
 .logo-container {
   display: flex;
@@ -92,7 +130,13 @@ header nav ul li a:hover {
     text-shadow: 0 0 8px var(--cyan-glow);
 }
 
-/* Estilo para Main y Footer */
+
+
+
+
+
+
+/* A parti de aqui se realizan los correspondientes cambios al main y al footer */
 main, footer {
     margin: 20px;
     padding: 20px;
