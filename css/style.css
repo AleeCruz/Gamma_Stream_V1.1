@@ -39,7 +39,7 @@ header nav ul li a{
     border-radius: 5px;
 }
 header nav ul li a:hover{
-    color:var(--cyan-glow);
+    color:var(--cyan-neon);
 }
 
 
