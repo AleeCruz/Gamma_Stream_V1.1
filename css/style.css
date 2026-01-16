@@ -6,6 +6,7 @@ body{
 
 header{
     border: solid;
+    background-color: #6a0ca0;
 }
 header nav ul{
     list-style-type: none;
@@ -20,12 +21,12 @@ header nav ul li{
 
 header nav ul li a{
     padding: 2px 7px 2px 7px;
-    color: #2e3aa0;
+    color: #fdfdfd;
     text-decoration: none;
     border-radius: 5px;
 }
 header nav ul li a:hover{
-    color:#c8dbeb ;
+    color:#8dc1eb ;
 }
 
 
