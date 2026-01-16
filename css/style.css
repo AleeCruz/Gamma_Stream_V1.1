@@ -1,75 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
 
 :root {
-  --bg-deep: #010d1a;      /* El azul oscuro de tu fondo */
-  --cyan-neon: #00d9ff;    /* El cian brillante del círculo */
+  --bg-deep: #010d1a;     
+  --cyan-neon: #00d9ff;    
   --cyan-glow: rgba(0, 217, 255, 0.4);
   --text-light: #e6faff;
 }
 
-
-body{
+body {
     margin: 0;
     padding: 0;
-    background-color: var(--cyan-glow);
+    /* Cambiado a azul profundo para que el logo resalte */
+    background-color: var(--bg-deep); 
+    font-family: sans-serif;
 }
 
-/*Vamos a realizar una barra de navegacion dejando varios estilos importantes y necesarios*/
-
-header{
-    border:ridge;
-    border-radius: 2px;
-    border-color: var(--cyan-neon);
-    background-color:var(--bg-deep) ;
+header {
+    width: 100%;
+    background-color: rgba(1, 13, 26, 0.95);
+    border-bottom: 0.3px ridge var(--cyan-neon);
+    position: sticky; /* Para que te siga al bajar */
+    top: 0;
+    z-index: 1000;
 }
-header nav ul{
+
+/* Este es el cambio clave */
+.navbar {
+    display: flex;
+    justify-content: space-between; /* Empuja logo a izq y menú a der */
+    align-items: center;
+    padding: 10px 5%; /* El padding que tenías en header va aquí */
+}
+
+/* Limpiamos la lista para que sea horizontal */
+.nav-links {
     list-style-type: none;
-    text-align: center;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 30px; 
+}
+/* --- Estilos del Logo --- */
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
-header nav ul li{
-    display: inline;
-    text-align: center;
-    margin: 0 50px;
+.logo-img {
+  border-radius: 30px;
+  height: 45px;
+  width: auto;
+  filter: drop-shadow(0 0 8px var(--cyan-glow));
+  transition: transform 0.3s ease;
 }
 
-header nav ul li a{
-    padding: 2px 7px 2px 7px;
+.logo-img:hover {
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 15px var(--cyan-neon));
+}
+
+.logo-text {
+  font-family: 'Orbitron', sans-serif; /* Usamos la fuente descargada */
+  color: var(--cyan-neon);
+  font-weight: bold;
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* --- Navegación --- */
+header nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 30px; /* Espacio entre enlaces */
+}
+
+header nav ul li a {
     color: var(--text-light);
     text-decoration: none;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+header nav ul li a:hover {
+    color: var(--cyan-neon);
+    text-shadow: 0 0 8px var(--cyan-glow);
+}
+
+/* Estilo para Main y Footer */
+main, footer {
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid var(--cyan-glow);
     border-radius: 5px;
-}
-header nav ul li a:hover{
-    color:var(--cyan-neon);
+    background-color: #02162b;
 }
 
-
-
-
-
-
-
-
-
- main,footer{
-    border: ridge;
-    border-radius: 5px;
-    border-color: var(--cyan-neon);
-    background-color: var(--bg-deep);
+h1, p {
+    color: var(--text-light);
+    line-height: 1.6;
 }
-
-
-p{
-    color:var(--text-light);
-}
-
-
-
-
-
-canvas {
-    border: solid;
-    border-radius: 10px;
-    border-color: rgb(255, 255, 255);
-    width: 100%;
-}
-
