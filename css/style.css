@@ -43,6 +43,7 @@ body{
     height: 45px;
     width: auto;
     filter: drop-shadow(0 0 8px var(--blue-black));
+    transition: 0.3s;
 }
 
 .logo-img:hover{
