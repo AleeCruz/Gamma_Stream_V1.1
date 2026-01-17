@@ -113,19 +113,6 @@ header nav ul li a:hover{
 
 
 
-/*Estilos para el main, foooter, h1 y p*/
-main,footer{
-    margin: 20px;
-    padding: 20px; 
-    border: 5px solid var(--glow);
-    background-color:var(--azuldark);
-}
-
-h1,p{
-    color: var(--light);
-    line-height: 1.9;
-    text-align: center;
-}
 
 .btn-youtube {
   display: inline-flex;
@@ -149,9 +136,26 @@ h1,p{
   font-size: 1.1rem;
 }
 
+/* Efecto de encendido al pasar el mouse */
+.btn-youtube:hover {
+  background-color: #ff0000;
+  color: var(--bg-deep); /* El fondo oscuro que ya definimos */
+  box-shadow: 0 0 20px #ff0000, 0 0 40px rgba(255, 0, 0, 0.4);
+  transform: translateY(-2px);
+}
 
 
 
+/*Estilos para el main, foooter, h1 y p*/
+main,footer{
+    margin: 20px;
+    padding: 20px; 
+    border: 5px solid var(--glow);
+    background-color:var(--azuldark);
+}
 
-
-
+h1,h2,p{
+    color: var(--light);
+    line-height: 1.9;
+    text-align: center;
+}
