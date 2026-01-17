@@ -1,54 +1,131 @@
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
 
-:root {
-  --bg-deep: #010d1a;     
-  --cyan-neon: #00d9ff;    
-  --cyan-glow: rgba(0, 217, 255, 0.4);
-  --text-light: #e6faff;
+
+:root{
+  --blue-black: rgba(1, 13, 26, 0.9);     
+  --azuldark:rgba(2, 22, 43, 0.4);;
+  --neon: #00d9ff;    
+  --glow:  rgba(0, 217, 255, 0.4);;
+  --light: #e6faff;
 }
 
-body {
+/*Se dara estilos al cuerpo de la pagina web*/
+body{
     margin: 0;
     padding: 0;
-    /* Cambiado a azul profundo para que el logo resalte */
-    background-color: var(--bg-deep); 
+    background-color: #010d1a;;
     font-family: sans-serif;
+    overflow-x: hidden;
 }
 
-/*A partir de aca se realizan las modificaciones necesarias para la barra de navegacion */
 
-
-header {
-    width: 100%;
-    background-color: rgba(1, 13, 26, 0.95);
-    border-bottom: 0.3px ridge var(--cyan-neon);
-    position: sticky; /* Para que te siga al bajar */
+#canvas-container {
+    position: fixed;
     top: 0;
-    z-index: 1000;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0; /* Envía la animación al fondo */
 }
 
-/* Este es el cambio clave */
-.navbar {
+
+/*Se le esta dando estilos solamente a la imagen
+ y al texto*/
+
+.logo-container{
     display: flex;
-    justify-content: space-between; /* Empuja logo a izq y menú a der */
     align-items: center;
-    padding: 10px 5%; /* El padding que tenías en header va aquí */
+    gap: 12px;
 }
 
-/* Limpiamos la lista para que sea horizontal */
-.nav-links {
-  font-family: 'Orbitron', sans-serif; /* Usamos la fuente descargada */
+.logo-img{
+    border-radius: 50%;
+    height: 45px;
+    width: auto;
+    filter: drop-shadow(0 0 8px var(--blue-black));
+}
 
+.logo-img:hover{
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 15px var(--glow));
+}
+
+.logo-text{
+    font-family: 'Orbitron', sans-serif;
+    color: var(--neon);
+    font-weight: bold;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+
+
+/*Ahora vamos a dar estilos a la barra de navegacion*/
+
+header{
+    width: 100%;
+    background-color: var(--blue-black);
+    border-bottom: 0.3px ridge var(--neon);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 5%;
+}
+
+
+
+header nav ul{
+    font-family: 'Orbitron', sans-serif;
     list-style-type: none;
     margin: 0;
     padding: 0;
     display: flex;
-    gap: 30px; 
+    gap: 30px;
+}
+
+header nav ul li{
+    display: flex;
+    text-align: center;
+    align-items: center;
+}
+header nav ul li a {
+    color: var(--light);
+    text-decoration: none;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+header nav ul li a:hover{
+    color: var(--neon);
+    text-shadow: 0 0 8px var(--glow);
 }
 
 
 
 
+
+
+
+/*Estilos para el main, foooter, h1 y p*/
+main,footer{
+    margin: 20px;
+    padding: 20px; 
+    border: 5px solid var(--glow);
+    background-color:var(--azuldark);
+}
+
+h1,p{
+    color: var(--light);
+    line-height: 1.9;
+    text-align: center;
+}
 
 .btn-youtube {
   display: inline-flex;
@@ -57,7 +134,7 @@ header {
   background: transparent;
   color: #ff0000; /* Rojo YouTube */
   border: 1px solid #ff0000;
-  padding: 8px 16px;
+  padding: 8px 8px;
   border-radius: 10px; /* Forma de píldora como tu estilo actual */
   font-family: 'Orbitron', sans-serif; /* Usamos la fuente descargada */
   font-weight: 600;
@@ -72,80 +149,9 @@ header {
   font-size: 1.1rem;
 }
 
-/* Efecto de encendido al pasar el mouse */
-.btn-youtube:hover {
-  background-color: #ff0000;
-  color: var(--bg-deep); /* El fondo oscuro que ya definimos */
-  box-shadow: 0 0 20px #ff0000, 0 0 40px rgba(255, 0, 0, 0.4);
-  transform: translateY(-2px);
-}
-
-/* --- Estilos del Logo --- */
-.logo-container {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.logo-img {
-  border-radius: 30px;
-  height: 45px;
-  width: auto;
-  filter: drop-shadow(0 0 8px var(--cyan-glow));
-  transition: transform 0.3s ease;
-}
-
-.logo-img:hover {
-  transform: scale(1.1);
-  filter: drop-shadow(0 0 15px var(--cyan-neon));
-}
-
-.logo-text {
-  font-family: 'Orbitron', sans-serif; /* Usamos la fuente descargada */
-  color: var(--cyan-neon);
-  font-weight: bold;
-  font-size: 1.2rem;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-}
-
-/* --- Navegación --- */
-header nav ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    gap: 30px; /* Espacio entre enlaces */
-}
-
-header nav ul li a {
-    color: var(--text-light);
-    text-decoration: none;
-    font-weight: 500;
-    transition: 0.3s;
-}
-
-header nav ul li a:hover {
-    color: var(--cyan-neon);
-    text-shadow: 0 0 8px var(--cyan-glow);
-}
 
 
 
 
 
 
-
-/* A parti de aqui se realizan los correspondientes cambios al main y al footer */
-main, footer {
-    margin: 20px;
-    padding: 20px;
-    border: 1px solid var(--cyan-glow);
-    border-radius: 5px;
-    background-color: #02162b;
-}
-
-h1,h2, p {
-    color: var(--text-light);
-    line-height: 1.6;
-}
