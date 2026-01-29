@@ -417,35 +417,104 @@ header nav ul li a.btn-youtube:hover {
 
 /* Ajustes para Móviles */
 @media (max-width: 768px) {
-    .menu-toggle {
-        display: flex; /* Aparece en móviles */
+    /* Reset del Navbar en móvil */
+    .navbar {
+        flex-direction: row; /* Logo a la izquierda, Menú a la derecha */
+        justify-content: space-between;
+        padding: 10px 5%;
     }
 
+    /* Estilo del Botón de las 3 rayitas / X */
+    .menu-toggle {
+        display: flex;
+        z-index: 20;
+        padding: 5px;
+        border: none; /* Quitamos ese borde blanco feo */
+        background: transparent;
+    }
+
+    .menu-toggle .bar {
+        width: 25px;
+        height: 2px;
+        background-color: var(--neon);
+        box-shadow: 0 0 5px var(--glow); /* Brillo neón en las barras */
+    }
+
+    /* Menú desplegable tipo persiana */
     .nav-links {
         position: absolute;
-        top: 70px; /* Debajo del header */
-        right: -100%; /* Escondido a la derecha */
-        flex-direction: column;
-        background: rgba(1, 13, 26, 0.95); /* Fondo oscuro semi-transparente */
+        top: 60px; /* Ajusta según la altura de tu header */
+        left: 0;
         width: 100%;
-        text-align: center;
-        transition: 0.4s;
-        padding: 20px 0;
+        flex-direction: column;
+        background: rgba(1, 13, 26, 0.98);
+        backdrop-filter: blur(15px);
         border-bottom: 2px solid var(--neon);
-        backdrop-filter: blur(10px); /* Efecto cristalino */
+        transform: translateY(-150%);
+        transition: transform 0.4s ease-in-out;
+        z-index: 10;
+        padding: 20px 0;
+        gap: 0; /* Controlamos el espacio con margin en los li */
     }
 
-    /* Clase que activaremos con JS */
     .nav-links.active {
-        right: 0;
+        transform: translateY(0);
     }
 
     .nav-links li {
-        margin: 15px 0;
+        width: 100%;
+        margin: 0;
     }
 
-    .btn-youtube {
-        width: auto;
-        display: inline-flex;
+    .nav-links li a {
+        padding: 15px;
+        border-bottom: 1px solid rgba(0, 217, 255, 0.1);
+        display: block;
+    }
+
+    /* EL FIX DEL BOTÓN YOUTUBE */
+    .nav-links li:last-child {
+        border-bottom: none;
+        padding: 20px 0;
+        display: flex;
+        justify-content: center;
+    }
+
+    .nav-links .btn-youtube {
+        width: 180px !important;
+        height: 45px !important;
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+        border: 2px solid #ff0000 !important; /* Borde rojo forzado */
+        border-radius: 8px;
+        color: #ff0000 !important;
+        background: transparent;
+        font-weight: bold;
+        box-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
+    }
+}
+
+
+
+/* Animación de la Hamburguesa a X */
+.menu-toggle.is-active .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+.menu-toggle.is-active .bar:nth-child(2) {
+    opacity: 0;
+}
+.menu-toggle.is-active .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+
+
+@media (max-width: 800px) {
+    .main-footer {
+        padding: 30px 5% 15px 5%; /* Mucho más compacto */
+    }
+    .footer-flex-container {
+        gap: 20px; /* Reduce el espacio muerto */
     }
 }
