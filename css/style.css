@@ -396,3 +396,56 @@ header nav ul li a.btn-youtube:hover {
         height: 35px; /* Reducimos un poco el logo */
     }
 }
+
+
+/* Estilos del Botón Hamburguesa */
+.menu-toggle {
+    display: none; /* Oculto en PC */
+    flex-direction: column;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    gap: 5px;
+}
+
+.menu-toggle .bar {
+    width: 25px;
+    height: 3px;
+    background-color: var(--neon); /* Tu color celeste */
+    transition: 0.3s;
+}
+
+/* Ajustes para Móviles */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: flex; /* Aparece en móviles */
+    }
+
+    .nav-links {
+        position: absolute;
+        top: 70px; /* Debajo del header */
+        right: -100%; /* Escondido a la derecha */
+        flex-direction: column;
+        background: rgba(1, 13, 26, 0.95); /* Fondo oscuro semi-transparente */
+        width: 100%;
+        text-align: center;
+        transition: 0.4s;
+        padding: 20px 0;
+        border-bottom: 2px solid var(--neon);
+        backdrop-filter: blur(10px); /* Efecto cristalino */
+    }
+
+    /* Clase que activaremos con JS */
+    .nav-links.active {
+        right: 0;
+    }
+
+    .nav-links li {
+        margin: 15px 0;
+    }
+
+    .btn-youtube {
+        width: auto;
+        display: inline-flex;
+    }
+}

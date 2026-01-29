@@ -17,21 +17,24 @@
   
      <header >
         <nav class="navbar">
+            <a href="index.html" class="link-gammastream">
+                <div class="logo-container">
+                    <img src="public/img/Logo.png" alt="Logo" class="logo-img">
+                    <span class="logo-text">GAMMA_STREAM</span>
+                </div>
+            </a>
 
-            <div class="logo-container">
-                <a href="index.html">
-                    <img src="/public/img/Logo.png" alt="Gamma Stream Logo" class="logo-img">
-                </a>
-                <a class = "link-gammastream" href="index.html">
-                    <span class="logo-text">Gamma_Stream</span>
-                </a>
-            </div>
+            <button class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
 
             <ul class="nav-links">
-                <li><a href="apoyoescolar.html">Apoyo Escolar</a></li>
-                <li><a href="cursos.html">Cursos</a></li>
-                <li><a href="contacto.html">Contacto</a></li>
-                <li><a href="https://www.youtube.com/@GammaStreamVerse" target="_blank" class="btn-youtube"><span class="play-icon">▶</span> YouTube</a></li>
+                <li><a href="#">Apoyo Escolar</a></li>
+                <li><a href="#">Cursos</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+                <li><a href="https://youtube.com/..." class="btn-youtube">▶ YOUTUBE</a></li>
             </ul>
         </nav>
     </header>
@@ -126,6 +129,17 @@
     </footer>
 
     <script type="module" src="/main.js"></script>
+    <script>
+        const menu = document.querySelector('#mobile-menu');
+        const menuLinks = document.querySelector('.nav-links');
+
+        menu.addEventListener('click', function() {
+            menuLinks.classList.toggle('active');
+            
+            // Animación opcional de las barritas (se convierte en X)
+            menu.classList.toggle('is-active');
+        });
+    </script>
 
   </body>
   
