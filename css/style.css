@@ -352,25 +352,25 @@ header {
     }
 
     .nav-links .btn-youtube {
-    box-sizing: border-box;
-    border: 1.5px solid #ff0000;
-    margin-bottom: 5px;
+        box-sizing: border-box;
+        border: 1.5px solid #ff0000;
+        margin-bottom: 5px;
+        color: white !important;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
 
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-
-    /* tamaño proporcional */
-    padding: 10px 18px;
-    min-width: 160px;   /* asegura presencia visual sin deformar */
-    height: auto;       /* deja que el alto lo defina el contenido */
-    font-size: 0.85rem;
-    line-height: 1;
+        /* tamaño proporcional */
+        padding: 10px 18px;
+        min-width: 160px;   /* asegura presencia visual sin deformar */
+        height: auto;       /* deja que el alto lo defina el contenido */
+        font-size: 0.85rem;
+        line-height: 1;
 }
 
     .main-footer { padding: 30px 5% 15px; }
-    
+
      .footer-brand .logo-container {
         width: 100%;
         justify-content: center; /* centra horizontalmente logo + texto */
