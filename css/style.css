@@ -8,6 +8,9 @@
     --glow: rgba(0, 217, 255, 0.4);
     --light: #e6faff;
 }
+html {
+    scroll-behavior: smooth;
+}
 
 body {
     margin: 0;
@@ -302,17 +305,38 @@ header nav ul li a.btn-youtube:hover {
 
 /* Celulares */
 @media (max-width: 600px) {
-    .nav-links {
+    .navbar {
+        flex-direction: column; /* Logo arriba, menú abajo */
+        padding: 15px 5%;
         gap: 15px;
-        font-size: 0.8rem;
     }
 
-    .footer-nav-group {
-        flex-direction: column;
+    .nav-links {
+        flex-direction: column; /* Enlaces uno debajo de otro */
         align-items: center;
+        width: 100%;
+        gap: 10px; /* Espacio cómodo para el dedo */
     }
 
-    .social-links { justify-content: center; }
+    .nav-links li {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .nav-links li a {
+        display: block;
+        padding: 8px 0;
+        width: 100%;
+        text-align: center;
+        border-bottom: 1px solid rgba(0, 217, 255, 0.1); /* Línea sutil divisoria */
+    }
+
+    /* El botón de YouTube al final de la lista */
+    .btn-youtube {
+        margin-top: 5px;
+        width: 80%; /* Que no ocupe todo el ancho para que se vea como botón */
+        justify-content: center;
+    }
 }
 
 @media (max-width: 800px) {
@@ -360,5 +384,15 @@ header nav ul li a.btn-youtube:hover {
     .contact-email {
         display: block;
         text-align: center;
+    }
+}
+
+@media (max-width: 400px) {
+    .logo-text {
+        font-size: 1rem; /* Un poco más pequeño en pantallas mini */
+    }
+    
+    .logo-img {
+        height: 35px; /* Reducimos un poco el logo */
     }
 }
