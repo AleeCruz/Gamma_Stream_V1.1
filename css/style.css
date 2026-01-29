@@ -1,4 +1,4 @@
-/* 1. VARIABLES Y RESET */
+/* 1. VARIABLES, FUENTES Y RESET */
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
 
 :root {
@@ -8,6 +8,13 @@
     --glow: rgba(0, 217, 255, 0.4);
     --light: #e6faff;
 }
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box; /* evita desbordes en móviles */
+}
+
 html {
     scroll-behavior: smooth;
 }
@@ -17,20 +24,18 @@ body {
     padding: 0;
     background-color: #010d1a;
     font-family: sans-serif;
-    overflow-x: hidden;
     color: var(--light);
-
+    overflow-x: hidden;
 
     display: flex;
     flex-direction: column;
-    min-height: 100vh; /* Fuerza al body a medir toda la pantalla */
+    min-height: 100vh;
 }
 
-/* 2. ELEMENTOS DE FONDO Y ESTRUCTURA */
+/* 2. FONDO Y ESTRUCTURA */
 #canvas-container {
     position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
+    inset: 0;
     z-index: 0;
 }
 
@@ -39,9 +44,10 @@ main {
     z-index: 1;
     margin: 20px;
     padding: 20px;
-
-    /* ESTO ES LO NUEVO */
-    flex: 1; /* Le dice al main que crezca para ocupar todo el espacio sobrante */
+    flex: 1;
+    max-width: 1200px;
+    width: 100%;
+    align-self: center;
 }
 
 h1, h2, p {
@@ -49,7 +55,7 @@ h1, h2, p {
     text-align: center;
 }
 
-/* 3. HEADER Y NAVEGACIÓN */
+/* 3. HEADER Y NAVBAR */
 header {
     width: 100%;
     background-color: var(--blue-black);
@@ -58,33 +64,32 @@ header {
     top: 0;
     z-index: 10;
 }
-header nav ul li a.btn-youtube:hover {
-    background-color: #ff0000;
-    color: #ffffff !important; /* El !important asegura que no cambie a celeste */
-    box-shadow: 0 0 20px #ff0000, 0 0 40px rgba(255, 0, 0, 0.6);
-    transform: translateY(-3px);
-}
+
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px 5%;
-    flex-wrap: wrap;
     gap: 15px;
+}
+
+/* Logo */
+.link-gammastream {
+    text-decoration: none;
+    display: flex;
 }
 
 .logo-container {
     display: flex;
     align-items: center;
     gap: 12px;
-    text-decoration: none;
 }
 
 .logo-img {
     border-radius: 50%;
     height: 45px;
-    filter: drop-shadow(0 0 8px var(--blue-black));
     transition: 0.3s;
+    filter: drop-shadow(0 0 8px var(--blue-black));
 }
 
 .logo-img:hover {
@@ -99,42 +104,39 @@ header nav ul li a.btn-youtube:hover {
     font-size: 1.2rem;
     text-transform: uppercase;
     letter-spacing: 1px;
-    text-decoration: none;
 }
 
+/* Links */
 .nav-links {
     list-style: none;
-    margin: 0; padding: 0;
     display: flex;
     gap: 30px;
+    margin: 0;
+    padding: 0;
     font-family: 'Orbitron', sans-serif;
 }
 
-.nav-links li a {
+.nav-links a {
     color: var(--light);
     text-decoration: none;
-    font-weight: 500;
     transition: 0.3s;
 }
 
-.nav-links li a:hover {
+.nav-links a:hover {
     color: var(--neon);
     text-shadow: 0 0 8px var(--glow);
 }
-.link-gammastream {
-    text-decoration: none; /* Esto quita la línea debajo del nombre */
-    display: flex;         /* Ayuda a alinear el texto con el logo si fuera necesario */
-}
-/* Botón Especial YouTube Header */
+
+/* Botón YouTube */
 .btn-youtube {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 8px;
     color: #ff0000;
     border: 1px solid #ff0000;
     padding: 5px 12px;
     border-radius: 10px;
-    text-decoration: none;
     font-size: 0.8rem;
     transition: 0.3s;
 }
@@ -142,14 +144,45 @@ header nav ul li a.btn-youtube:hover {
 .btn-youtube:hover {
     background-color: #ff0000;
     color: #fff;
-    box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+    box-shadow: 0 0 20px #ff0000, 0 0 40px rgba(255, 0, 0, 0.6);
+    transform: translateY(-3px);
 }
 
-/* 4. FOOTER ESTILIZADO */
+/* Botón hamburguesa */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 20;
+}
+
+.menu-toggle .bar {
+    width: 25px;
+    height: 2px;
+    background-color: var(--neon);
+    box-shadow: 0 0 5px var(--glow);
+    transition: 0.3s;
+}
+
+/* Animación hamburguesa → X */
+.menu-toggle.is-active .bar:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+.menu-toggle.is-active .bar:nth-child(2) {
+    opacity: 0;
+}
+.menu-toggle.is-active .bar:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+/* 4. FOOTER */
 .main-footer {
     background-color: var(--blue-black);
     border-top: 1px solid var(--neon);
-    padding: 60px 8% 20px 8%;
+    padding: 60px 8% 20px;
     position: relative;
     z-index: 1;
 }
@@ -171,7 +204,6 @@ header nav ul li a.btn-youtube:hover {
 }
 
 .footer-description {
-    text-align: left;
     font-size: 0.9rem;
     opacity: 0.8;
 }
@@ -182,10 +214,6 @@ header nav ul li a.btn-youtube:hover {
     flex-wrap: wrap;
     justify-content: space-between;
     gap: 30px;
-}
-
-.footer-column {
-    flex: 1 1 150px;
 }
 
 .footer-column h3 {
@@ -201,23 +229,21 @@ header nav ul li a.btn-youtube:hover {
     padding: 0;
 }
 
-.footer-column ul li { margin-bottom: 10px; }
-
-.footer-column ul li a {
+.footer-column a {
     color: var(--light);
     text-decoration: none;
     font-size: 0.9rem;
-    transition: 0.3s;
     opacity: 0.7;
+    transition: 0.3s;
 }
 
-.footer-column ul li a:hover {
+.footer-column a:hover {
     color: var(--neon);
     opacity: 1;
     padding-left: 5px;
 }
 
-/* 5. BOTONES SOCIALES ANIMADOS */
+/* Redes sociales */
 .social-links {
     display: flex;
     gap: 12px;
@@ -232,16 +258,13 @@ header nav ul li a.btn-youtube:hover {
     align-items: center;
     justify-content: center;
     border-radius: 8px;
-    text-decoration: none;
     font-family: 'Orbitron', sans-serif;
     font-weight: bold;
     font-size: 0.7rem;
     color: var(--light);
     background: rgba(2, 22, 43, 0.6);
     border: 1px solid rgba(0, 217, 255, 0.2);
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    position: relative;
-    overflow: hidden;
+    transition: 0.3s;
 }
 
 .social-icon:hover {
@@ -249,18 +272,17 @@ header nav ul li a.btn-youtube:hover {
     color: #fff;
 }
 
-/* Colores específicos Hover */
-.youtube:hover { background: #ff0000; box-shadow: 0 0 20px #ff0000; border-color: #ff0000; }
-.instagram:hover { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%); box-shadow: 0 0 20px #d6249f; }
-.linkedin:hover { background: #0077b5; box-shadow: 0 0 20px #0077b5; border-color: #0077b5; }
-.discord:hover { background: #5865F2; box-shadow: 0 0 20px #5865F2; border-color: #5865F2; }
-.tiktok:hover { background: #000; box-shadow: 2px 2px 10px #ff0050, -2px -2px 10px #00f2ea; border-color: #ff0050; }
-.github:hover { background: #333; box-shadow: 0 0 20px #fff; border-color: #fff; }
+/* Colores hover */
+.youtube:hover { background:#ff0000; box-shadow:0 0 20px #ff0000; }
+.instagram:hover { background:radial-gradient(circle at 30% 107%,#fdf497,#fd5949 45%,#d6249f 60%,#285AEB 90%); }
+.linkedin:hover { background:#0077b5; }
+.discord:hover { background:#5865F2; }
+.tiktok:hover { background:#000; box-shadow:2px 2px 10px #ff0050,-2px -2px 10px #00f2ea; }
+.github:hover { background:#333; box-shadow:0 0 20px #fff; }
 
 .contact-email {
     color: var(--neon);
     text-decoration: none;
-    font-size: 0.85rem;
     font-weight: bold;
 }
 
@@ -273,206 +295,54 @@ header nav ul li a.btn-youtube:hover {
     opacity: 0.5;
 }
 
-/* 6. RESPONSIVE DESIGN (SISTEMA UNIFICADO) */
+/* 5. RESPONSIVE */
 
-/* Tablets y pantallas medianas */
+/* Tablets */
 @media (max-width: 950px) {
-    .navbar {
-        flex-direction: column;
-        padding: 20px;
-    }
-
-    .footer-flex-container {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-
-    .footer-brand {
-        align-items: center;
-        text-align: center;
-        margin-bottom: 30px;
-    }
-
-    .footer-description { text-align: center; }
-
+    .navbar { flex-direction: column; }
+    .footer-flex-container,
     .footer-nav-group {
-        width: 100%;
-        justify-content: center;
-        gap: 40px;
-    }
-}
-
-/* Celulares */
-@media (max-width: 600px) {
-    .navbar {
-        flex-direction: column; /* Logo arriba, menú abajo */
-        padding: 15px 5%;
-        gap: 15px;
-    }
-
-    .nav-links {
-        flex-direction: column; /* Enlaces uno debajo de otro */
-        align-items: center;
-        width: 100%;
-        gap: 10px; /* Espacio cómodo para el dedo */
-    }
-
-    .nav-links li {
-        width: 100%;
-        justify-content: center;
-    }
-
-    .nav-links li a {
-        display: block;
-        padding: 8px 0;
-        width: 100%;
-        text-align: center;
-        border-bottom: 1px solid rgba(0, 217, 255, 0.1); /* Línea sutil divisoria */
-    }
-
-    /* El botón de YouTube al final de la lista */
-    .btn-youtube {
-        margin-top: 5px;
-        width: 80%; /* Que no ocupe todo el ancho para que se vea como botón */
-        justify-content: center;
-    }
-}
-
-@media (max-width: 800px) {
-    /* Forzamos al contenedor a ser una columna */
-    .footer-flex-container {
         flex-direction: column;
         align-items: center;
         text-align: center;
-        gap: 50px; /* Más espacio entre bloques para que no se vea amontonado */
     }
-
-    .footer-brand {
-        max-width: 100%;
-        align-items: center;
-    }
-
-    .footer-description {
-        text-align: center;
-        max-width: 80%; /* Para que el texto no ocupe todo el ancho y se lea mejor */
-    }
-
-    /* Las columnas de links ahora se apilan o se centran mejor */
-    .footer-nav-group {
-        width: 100%;
-        flex-direction: column; /* Apilamos Explorar, Soporte y Síguenos */
-        align-items: center;
-        gap: 40px;
-    }
-
-    .footer-column {
-        width: 100%;
-        text-align: center;
-    }
-
-    .footer-column h3 {
-        margin-bottom: 15px;
-    }
-
-    /* Centramos las redes sociales sí o sí */
-    .social-links {
-        justify-content: center;
-        margin: 0 auto 15px auto;
-    }
-
-    .contact-email {
-        display: block;
-        text-align: center;
-    }
+    .social-links { justify-content: center; }
 }
 
-@media (max-width: 400px) {
-    .logo-text {
-        font-size: 1rem; /* Un poco más pequeño en pantallas mini */
-    }
-    
-    .logo-img {
-        height: 35px; /* Reducimos un poco el logo */
-    }
-}
-
-
-/* Estilos del Botón Hamburguesa */
-.menu-toggle {
-    display: none; /* Oculto en PC */
-    flex-direction: column;
-    cursor: pointer;
-    background: transparent;
-    border: none;
-    gap: 5px;
-}
-
-.menu-toggle .bar {
-    width: 25px;
-    height: 3px;
-    background-color: var(--neon); /* Tu color celeste */
-    transition: 0.3s;
-}
-
-/* Ajustes para Móviles */
+/* Móviles */
 @media (max-width: 768px) {
-    /* Reset del Navbar en móvil */
+
     .navbar {
-        flex-direction: row; /* Logo a la izquierda, Menú a la derecha */
-        justify-content: space-between;
+        flex-direction: row;
         padding: 10px 5%;
     }
 
-    /* Estilo del Botón de las 3 rayitas / X */
-    .menu-toggle {
-        display: flex;
-        z-index: 20;
-        padding: 5px;
-        border: none; /* Quitamos ese borde blanco feo */
-        background: transparent;
-    }
+    .menu-toggle { display: flex; }
 
-    .menu-toggle .bar {
-        width: 25px;
-        height: 2px;
-        background-color: var(--neon);
-        box-shadow: 0 0 5px var(--glow); /* Brillo neón en las barras */
-    }
-
-    /* Menú desplegable tipo persiana */
     .nav-links {
         position: absolute;
-        top: 60px; /* Ajusta según la altura de tu header */
+        top: 60px;
         left: 0;
         width: 100%;
         flex-direction: column;
-        background: rgba(1, 13, 26, 0.98);
+        background: rgba(1,13,26,0.98);
         backdrop-filter: blur(15px);
         border-bottom: 2px solid var(--neon);
         transform: translateY(-150%);
         transition: transform 0.4s ease-in-out;
-        z-index: 10;
         padding: 20px 0;
-        gap: 0; /* Controlamos el espacio con margin en los li */
+        gap: 0;
     }
 
-    .nav-links.active {
-        transform: translateY(0);
-    }
+    .nav-links.active { transform: translateY(0); }
 
-    .nav-links li {
-        width: 100%;
-        margin: 0;
-    }
-
-    .nav-links li a {
-        padding: 15px;
-        border-bottom: 1px solid rgba(0, 217, 255, 0.1);
+    .nav-links a {
         display: block;
+        padding: 15px;
+        border-bottom: 1px solid rgba(0,217,255,0.1);
+        text-align: center;
     }
 
-    /* EL FIX DEL BOTÓN YOUTUBE */
     .nav-links li:last-child {
         border-bottom: none;
         padding: 20px 0;
@@ -481,45 +351,28 @@ header nav ul li a.btn-youtube:hover {
     }
 
     .nav-links .btn-youtube {
-        width: 150px !important;
-        height: 38px !important;
-        
-        /* 1. EVITA EL RECORTE: Asegura que el borde se dibuje HACIA ADENTRO */
-        box-sizing: border-box !important; 
-        
-        /* 2. FORZA EL BORDE: A veces el navegador necesita que le recuerdes el estilo */
-        border: 1.5px solid #ff0000 !important;
-        
-        /* 3. MARGEN DE SEGURIDAD: Le da un aire para que no choque con el fondo */
-        margin-bottom: 5px !important; 
+    box-sizing: border-box;
+    border: 1.5px solid #ff0000;
+    margin-bottom: 5px;
 
-        /* Alineación perfecta del texto */
-        display: flex !important;
-        align-items: center;
-        justify-content: center;
-    }
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    /* tamaño proporcional */
+    padding: 10px 18px;
+    min-width: 160px;   /* asegura presencia visual sin deformar */
+    height: auto;       /* deja que el alto lo defina el contenido */
+    font-size: 0.85rem;
+    line-height: 1;
 }
 
-
-
-/* Animación de la Hamburguesa a X */
-.menu-toggle.is-active .bar:nth-child(1) {
-    transform: translateY(8px) rotate(45deg);
-}
-.menu-toggle.is-active .bar:nth-child(2) {
-    opacity: 0;
-}
-.menu-toggle.is-active .bar:nth-child(3) {
-    transform: translateY(-8px) rotate(-45deg);
+    .main-footer { padding: 30px 5% 15px; }
 }
 
-
-
-@media (max-width: 800px) {
-    .main-footer {
-        padding: 30px 5% 15px 5%; /* Mucho más compacto */
-    }
-    .footer-flex-container {
-        gap: 20px; /* Reduce el espacio muerto */
-    }
+/* Pantallas muy chicas */
+@media (max-width: 400px) {
+    .logo-text { font-size: 1rem; }
+    .logo-img { height: 35px; }
 }
