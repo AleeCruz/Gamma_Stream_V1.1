@@ -16,6 +16,11 @@ body {
     font-family: sans-serif;
     overflow-x: hidden;
     color: var(--light);
+
+
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Fuerza al body a medir toda la pantalla */
 }
 
 /* 2. ELEMENTOS DE FONDO Y ESTRUCTURA */
@@ -31,6 +36,9 @@ main {
     z-index: 1;
     margin: 20px;
     padding: 20px;
+
+    /* ESTO ES LO NUEVO */
+    flex: 1; /* Le dice al main que crezca para ocupar todo el espacio sobrante */
 }
 
 h1, h2, p {
@@ -88,6 +96,7 @@ header nav ul li a.btn-youtube:hover {
     font-size: 1.2rem;
     text-transform: uppercase;
     letter-spacing: 1px;
+    text-decoration: none;
 }
 
 .nav-links {
@@ -109,7 +118,10 @@ header nav ul li a.btn-youtube:hover {
     color: var(--neon);
     text-shadow: 0 0 8px var(--glow);
 }
-
+.link-gammastream {
+    text-decoration: none; /* Esto quita la línea debajo del nombre */
+    display: flex;         /* Ayuda a alinear el texto con el logo si fuera necesario */
+}
 /* Botón Especial YouTube Header */
 .btn-youtube {
     display: inline-flex;
@@ -135,7 +147,6 @@ header nav ul li a.btn-youtube:hover {
     background-color: var(--blue-black);
     border-top: 1px solid var(--neon);
     padding: 60px 8% 20px 8%;
-    margin-top: 50px;
     position: relative;
     z-index: 1;
 }
