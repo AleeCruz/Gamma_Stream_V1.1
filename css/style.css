@@ -428,12 +428,12 @@ header {
     letter-spacing: 2px;
     display: block;
     margin-bottom: 10px;
-    font-size: 30px; /* Tamaño grande que pediste */
+    font-size: 40px; /* Tamaño grande que pediste */
     text-shadow: 0 0 10px var(--glow);
 }
 
 .about-text h2 { 
-    font-size: 40px; 
+    font-size: 30px; 
     margin: 10px 0; 
     text-align: left; /* Alineado para lectura tech */
 }
@@ -473,6 +473,7 @@ header {
         padding: 40px 5%;
     }
 
+
     .about-text h2, .about-text p {
         text-align: center; /* Centramos texto en móviles */
     }
@@ -490,11 +491,11 @@ header {
     }
     
     .subtitle {
-        font-size: 24px;
+        font-size: 30px;
     }
     
     .about-text h2 {
-        font-size: 30px;
+        font-size: 25px;
     }
 }
 
