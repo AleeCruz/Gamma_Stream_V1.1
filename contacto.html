@@ -44,10 +44,142 @@
     <main >
 
 
-        <h1>Contacto</h1>
-        <p>En esta seccion se desarrollara todo lo necesario a 
-            a los contactos 
-        </p>
+        <!-----------------------------------
+        FORMULARIO DE CONTACTO
+        ------------------------------------>
+        <section class="contact-section">
+            <div class="contact-container">
+                <div class="contact-info">
+                    <span class="subtitle">Contacto</span>
+                    <h2>¿Tienes dudas? <span>Escríbenos</span></h2>
+                    <p>Estamos aquí para ayudarte a impulsar tu carrera tech. Déjanos tu mensaje y te responderemos en menos de 24 horas.</p>
+                </div>
+
+                <form action="https://formspree.io/f/mpqroyap" method="POST" class="contact-form">
+                    <input type="hidden" name="_subject" value="Nueva duda en Gamma Stream">
+                    
+                    <div class="form-group">
+                        <input type="text" name="nombre" placeholder="Nombre completo" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="email" placeholder="Correo electrónico" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea name="mensaje" id="message" rows="5" placeholder="Tu mensaje..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit">Enviar mensaje</button>
+                </form>
+            </div>
+        </section>
+
+        <!-----------------------------------
+        cALENDARIO
+        ------------------------------------>
+
+        <section class="contact-section">
+            <div class="contact-container">
+                <div class="contact-info">
+                    <span class="subtitle">Agendar Cita</span>
+                    <h2>Reserva una <span>Clase </span></h2>
+                    <p>Déjanos tus datos y nos pondremos en contacto contigo para confirmar la sesión.</p>
+                </div>
+
+                <form action="https://formspree.io/f/mpqroyap" method="POST" class="contact-form">
+                    <input type="hidden" name="_subject" value="Nueva Reserva de Asesoría - Gamma Stream">
+
+                    <div class="form-group">
+                        <input type="text" name="alumno_nombre" placeholder="Nombre completo" required>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <input type="email" name="email" placeholder="Correo electrónico" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" name="telefono" placeholder="WhatsApp / Celular" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="date">Fecha de la Cita</label>
+                            <input type="date" id="date" name="fecha_cita" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="time-start">Desde</label>
+                            <select id="time-start" name="hora_inicio" required onchange="updateEndTime()">
+                                <option value="" disabled selected>Hora inicio</option>
+                                <option value="07:00">07:00 AM</option>
+                                <option value="08:00">08:00 AM</option>
+                                <option value="09:00">09:00 AM</option>
+                                <option value="10:00">10:00 AM</option>
+                                <option value="11:00">11:00 AM</option>
+                                <option value="12:00">12:00 PM</option>
+                                <option value="13:00">01:00 PM</option>
+                                <option value="14:00">02:00 PM</option>
+                                <option value="15:00">03:00 PM</option>
+                                <option value="16:00">04:00 PM</option>
+                                <option value="17:00">05:00 PM</option>
+                                <option value="18:00">06:00 PM</option>
+                                <option value="19:00">07:00 PM</option>
+                                <option value="20:00">08:00 PM</option>
+                                <option value="21:00">09:00 PM</option>
+                                <option value="22:00">10:00 PM</option>
+                                <option value="23:00">11:00 PM</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="time-end">Hasta</label>
+                            <select id="time-end" name="hora_fin" required>
+                                <option value="" disabled selected>Hora fin</option>
+                                <option value="08:00">08:00 AM</option>
+                                <option value="09:00">09:00 AM</option>
+                                <option value="10:00">10:00 AM</option>
+                                <option value="11:00">11:00 AM</option>
+                                <option value="12:00">12:00 PM</option>
+                                <option value="13:00">01:00 PM</option>
+                                <option value="14:00">02:00 PM</option>
+                                <option value="15:00">03:00 PM</option>
+                                <option value="16:00">04:00 PM</option>
+                                <option value="17:00">05:00 PM</option>
+                                <option value="18:00">06:00 PM</option>
+                                <option value="19:00">07:00 PM</option>
+                                <option value="20:00">08:00 PM</option>
+                                <option value="21:00">09:00 PM</option>
+                                <option value="22:00">10:00 PM</option>
+                                <option value="23:00">11:00 PM</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="materia">Materia de consulta</label>
+                        <select id="materia" name="materia" required>
+                            <option value="" disabled selected>Seleccionar</option>
+                            <option value="Matemática (51)">Matemática (51)</option>
+                            <option value="Fisica (03)">Fisica (03)</option>
+                            <option value="Análisis Matemático (A66)">Análisis Matemático (A66)</option>
+                            <option value="Álgebra (62)">Álgebra (62)</option>
+                            <option value="Análisis Matemático (72)">Análisis Matemático (72)</option>
+                            <option value="Álgebra (71)">Álgebra (71)</option>
+                            <option value="Otro">Otro / Consulta General</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <textarea name="detalles" rows="3" placeholder="¿En qué podemos ayudarte específicamente?"></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn-submit">Confirmar Reserva</button>
+                </form>
+            </div>
+        </section>
+
+
+
     </main>
 
     <footer class="main-footer">

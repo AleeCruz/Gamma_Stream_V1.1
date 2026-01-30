@@ -3,10 +3,17 @@
 
 :root {
     --blue-black: rgba(1, 13, 26, 0.9);
-    --azuldark: rgba(2, 22, 43, 0.4);
+    --azul-dark: #0a0f1c;
+    --azul-card: #0b1c2a;
     --neon: #00d9ff;
     --glow: rgba(0, 217, 255, 0.4);
     --light: #e6faff;
+    --success: #2ecc71;
+    
+    /* Variables del slider infinito */
+    --slide-width: 200px;
+    --slide-count: 12;   
+    --visible-shift: 6;  
 }
 
 *,
@@ -23,9 +30,10 @@ body {
     margin: 0;
     padding: 0;
     background-color: #010d1a;
-    font-family: sans-serif;
+    font-family: 'Orbitron', sans-serif;
     color: var(--light);
     overflow-x: hidden;
+    line-height: 1.6;
 
     display: flex;
     flex-direction: column;
@@ -340,7 +348,9 @@ header {
     }
 }
 
-/* 5. RESPONSIVE */
+/* ------------------------------------------------
+RESPONSIVIDAD PARA DISTINTOS DISPOSITIVOS
+------------------------------------*/
 
 /* Tablets */
 @media (max-width: 950px) {
@@ -431,3 +441,193 @@ header {
     .logo-img { height: 35px; }
 }
 
+
+
+
+
+
+/*---------------------------------------------
+ESTE ES EL CSS PARA EL CARRUSEL INFINITO
+---------------------------------------------- */
+
+
+.slider {
+    width: 100%;
+    overflow: hidden;
+    padding: 60px 0;
+    background: rgba(1, 13, 26, 0.4);
+    position: relative;
+}
+
+.slide-track {
+    display: flex;
+    /* Ancho: (ancho de cada slide) x (total de imágenes) */
+    width: calc(200px * 12); 
+    animation: scroll-infinito 25s linear infinite;
+}
+
+.slide {
+    width: 200px; /* Espacio horizontal para cada logo */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.slide img {
+    height: 80px; /* Altura uniforme para todos los logos */
+    width: auto;
+    filter: drop-shadow(0 0 10px rgba(0, 217, 255, 0.3)); /* Brillo sutil inicial */
+    transition: all 0.4s ease;
+}
+
+/* Efecto al pasar el mouse por el logo */
+.slide img:hover {
+    transform: scale(1.2) rotate(5deg);
+    filter: drop-shadow(0 0 20px var(--neon));
+}
+
+/* Animación: se desplaza exactamente la mitad (6 logos) */
+@keyframes scroll-infinito {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(-200px * 6)); }
+}
+
+/* Detener cuando el usuario pone el mouse encima */
+.slider:hover .slide-track {
+    animation-play-state: paused;
+}
+
+
+
+
+
+/* ==========================================================================
+   5. FORMULARIOS (CONTACTO Y CALENDARIO)
+   ========================================================================== */
+.contact-section {
+    padding: 80px 10%;
+}
+
+.contact-container {
+    display: flex;
+    gap: 60px;
+    max-width: 1100px;
+    margin: 0 auto;
+    align-items: center;
+}
+
+.contact-info { flex: 1; }
+
+.contact-form {
+    flex: 1;
+    background: var(--azul-card);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    border: 1px solid rgba(0, 217, 255, 0.1);
+}
+
+.form-group { margin-bottom: 20px; }
+
+.form-row {
+    display: flex;
+    gap: 20px;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.form-row .form-group {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-size: 11px;
+    color: var(--neon);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: bold;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 14px 18px;
+    background: rgba(1, 13, 26, 0.9);
+    border: 1px solid rgba(0, 217, 255, 0.2);
+    border-radius: 10px;
+    color: var(--light);
+    font-family: 'Orbitron', sans-serif;
+    font-size: 14px;
+    outline: none;
+    transition: 0.3s ease;
+}
+
+input:focus, select:focus, textarea:focus {
+    border-color: var(--neon);
+    box-shadow: 0 0 15px var(--glow);
+}
+
+select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%2300d9ff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(1) sepia(100%) saturate(10000%) hue-rotate(170deg);
+    cursor: pointer;
+}
+
+.btn-submit {
+    width: 100%;
+    padding: 16px;
+    background: var(--neon);
+    color: #001018;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    font-family: 'Orbitron', sans-serif;
+    cursor: pointer;
+    box-shadow: 0 0 15px var(--glow);
+    transition: 0.3s;
+    text-transform: uppercase;
+
+}
+.subtitle {
+    color: var(--neon);
+    font-weight: bold;
+    letter-spacing: 2px;
+    display: block;
+    margin-bottom: 10px;
+    font-size: 30px;
+}
+/* ==========================================================================
+   6. RESPONSIVE GLOBAL
+   ========================================================================== */
+@media (max-width: 992px) {
+    .course-slide { 
+        flex-direction: column-reverse; 
+        padding: 40px 20px 80px; 
+        text-align: center;
+        gap: 30px;
+    }
+    .course-text, .course-image { width: 100%; }
+    .course-image img { height: 250px; }
+    
+    .arrow { top: auto; bottom: 15px; transform: none; }
+    .arrow.left { left: 30%; }
+    .arrow.right { right: 30%; }
+
+    .contact-container { flex-direction: column; text-align: center; }
+    .contact-form { width: 100%; }
+}
+
+@media (max-width: 600px) {
+    :root { --slide-width: 130px; }
+    .slide img { height: 50px; }
+    .form-row { flex-direction: column; gap: 20px; }
+    .about-media { width: 300px; height: 300px; }
+}
